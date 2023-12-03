@@ -1,6 +1,6 @@
-import icon from '../../symbol.svg'
+import icon from '../../symbol.svg';
 import classNames from 'classnames/bind';
-import styles from './Modal.module.css'
+import styles from './Modal.module.css';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import Button from '../Button/Button';
@@ -11,26 +11,26 @@ const Modal = ({data}) => {
   const modalRoot = document.getElementById('modal');
   const dialog = document.querySelector('dialog');
 
-    const carInCity = (item) => item.split(" ")[3].split("").slice(0, item.split(" ")[3].split("").length-1)
-    const carInCountry = (item) => item.split(" ")[4].split("")
+  const carInCity = (item) => item.split(" ")[3].split("").slice(0, item.split(" ")[3].split("").length-1);
+  const carInCountry = (item) => item.split(" ")[4].split("");
 
-    const handleBackdrop = (e) => {
-if(e.target.localName === "dialog"){
-  dialog.close()
-}
-    }
+  const handleBackdrop = (e) => {
+      if(e.target.localName === "dialog"){
+      dialog.close();
+    };
+  };
 
-    const handleEscapeBackdrop = (e) => {
-      if(e.code === 'Escape'){
-        dialog.close()
-      }
-          }
+  const handleEscapeBackdrop = (e) => {
+    if(e.code === 'Escape'){
+      dialog.close();
+    };
+  };
 
-    useEffect(() => {
-      window.addEventListener('keydown', handleEscapeBackdrop);
-      return () => {
-          window.removeEventListener('keydown', handleEscapeBackdrop);
-      };
+  useEffect(() => {
+    window.addEventListener('keydown', handleEscapeBackdrop);
+    return () => {
+        window.removeEventListener('keydown', handleEscapeBackdrop);
+    };
   });
 
   const handleCall = () => {
@@ -39,12 +39,11 @@ if(e.target.localName === "dialog"){
     link.click();
   };
 
-
     const regex = /(\$)(\d+)/;
   return (
     createPortal(
       <dialog onClick={(e)=>handleBackdrop(e)}>
-<div className={cn('modal')}>
+      <div className={cn('modal')}>
         <svg className={cn('modal__svg')} onClick={()=>dialog.close()} width="24px" height="24px">
                     <use href={icon + "#icon-x"}></use>
                 </svg>
@@ -71,7 +70,7 @@ if(e.target.localName === "dialog"){
                 <p className={cn('modal__functionalities')}>Rental Conditions: </p>
                 <ul className={cn('modal__functionalities_list')}>
                   {Object.keys(data).length !== 0 && data.rentalConditions.split('\n').map((el)=><li key={el}>{el}</li>)}
-                  <li>Mileage:&nbsp;<span>{data.mileage}</span></li>
+                  {Object.keys(data).length !== 0 && <li>Mileage:&nbsp;<span>{data.mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span></li>}
                   {Object.keys(data).length !== 0 && <li>Price:&nbsp;<span>{data.rentalPrice.replace(regex, '$2$1')}</span></li>}
                 </ul>
                 <Button title={"Rental car"} type={'button'} customStyle={{width:168}} action={()=>handleCall()}/>
@@ -79,8 +78,7 @@ if(e.target.localName === "dialog"){
 </dialog>,
       modalRoot,
   )
-
   )
-}
+};
 
-export default Modal
+export default Modal;

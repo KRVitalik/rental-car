@@ -14,8 +14,8 @@ const instance = axios.create({
                 );
             return response.data;
         } catch (e) {
-            return console.log(e)
-        }
+            return console.log(e);
+        };
     },
 );
 
@@ -25,7 +25,7 @@ export const addToFavorites = createAsyncThunk(
         try {
             return carId
         } catch (e) {
-            return console.log(e)
-        }
+            return console.log(e);
+        };
     },
 );

@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './FilterForm.module.css';
 import Button from '../Button/Button';
-import cars from '../car.json'
+import cars from '../car.json';
 import { useDispatch } from 'react-redux';
 import { getCars } from '../storage/collectionAPI';
 
@@ -9,17 +9,18 @@ let cn = classNames.bind(styles);
 
 const FilterForm = () => {
     const dispatch = useDispatch();
+
     const buttonStyle = {
         height:48
-    }
+    };
 
     const handleForm = (e) => {
         e.preventDefault();
         const formData = {
             make:e.target.cars.value
-        }
-        dispatch(getCars(formData))
-    }
+        };
+        dispatch(getCars(formData));
+    };
 
   return (
         <form className={cn('form__container')} onSubmit={(e)=>handleForm(e)}>
@@ -43,4 +44,4 @@ const FilterForm = () => {
   )
   };
 
-export default FilterForm
+export default FilterForm;

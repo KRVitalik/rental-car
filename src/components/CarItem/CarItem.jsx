@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './CarItem.module.css';
 import Button from '../Button/Button';
-import icon from '../../symbol.svg'
+import icon from '../../symbol.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites } from '../storage/collectionAPI';
 import { useLocation } from 'react-router-dom';
@@ -11,45 +11,44 @@ import { useState } from 'react';
 let cn = classNames.bind(styles);
 
 const CarItem = ({items}) => {
-    const location = useLocation();
-    const [dataModal, setDataModal] = useState({})
-
-    const favoritesCars = useSelector((state) => state.cars.favorites);
     const dispatch = useDispatch();
+    const location = useLocation();
+    const [dataModal, setDataModal] = useState({});
+    const favoritesCars = useSelector((state) => state.cars.favorites);
 
-    const carInCity = (item) => item.split(" ")[3].split("").slice(0, item.split(" ")[3].split("").length-1)
-    const carInCountry = (item) => item.split(" ")[4].split("")
+    const carInCity = (item) => item.split(" ")[3].split("").slice(0, item.split(" ")[3].split("").length-1);
+    const carInCountry = (item) => item.split(" ")[4].split("");
 
-const sortFavoritesCars = (id) =>{
-    return favoritesCars.find(favoritesCar => favoritesCar === id)
-}
+    const sortFavoritesCars = (id) =>{
+        return favoritesCars.find(favoritesCar => favoritesCar === id);
+    };
 
-const handleFavoriteClick = (id) => {
-    switch (!sortFavoritesCars(id)) {
-        case true:
-            dispatch(addToFavorites([...favoritesCars, id]))
-        break;
-        case false:
-            const newFavorites = favoritesCars.filter(favoritesCarId => favoritesCarId !== id);
-            dispatch(addToFavorites(newFavorites));
-        break;
-        default:
+    const handleFavoriteClick = (id) => {
+        switch (!sortFavoritesCars(id)) {
+            case true:
+                dispatch(addToFavorites([...favoritesCars, id]));
             break;
-    }
-}
+            case false:
+                const newFavorites = favoritesCars.filter(favoritesCarId => favoritesCarId !== id);
+                dispatch(addToFavorites(newFavorites));
+            break;
+            default:
+                break;
+        };
+    };
 
-const itemsToRender = () => {
-if(location.pathname === "/catalog"){
-    return items
-} else return items.filter((item)=>favoritesCars.includes(item.id))
-    }
+    const itemsToRender = () => {
+        if(location.pathname === "/catalog"){
+            return items;
+        } else return items.filter((item)=>favoritesCars.includes(item.id));
+    };
 
     const openModal = (item) => {
-        setDataModal(item)
+        setDataModal(item);
         dialog.show();
-    }
+    };
 
-    var dialog = document.querySelector('dialog');
+    const dialog = document.querySelector('dialog');
 
     return (
 <>
@@ -59,9 +58,7 @@ if(location.pathname === "/catalog"){
                     <use href={icon + `${sortFavoritesCars(item.id) ? "#icon-active" : "#icon-normal"}`}></use>
                 </svg>
                 <div>
-                    <img className={cn('item__image')} 
-            src={item.img}
-             alt="" />
+                    <img className={cn('item__image')} src={item.img} alt={item.model} />
                 <div className={cn('item__carName')}>
                     <div>
                         <h2>{item.make}&nbsp;</h2>
@@ -87,6 +84,6 @@ if(location.pathname === "/catalog"){
     <Modal data={dataModal}/>
     </>
   )
-}
+};
 
-export default CarItem
+export default CarItem;

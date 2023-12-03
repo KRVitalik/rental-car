@@ -10,35 +10,33 @@ import Button from '../Button/Button';
 
 let cn = classNames.bind(styles);
 
-
 const CarsList = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
-  const [page, setPage] = useState(2)
-  const [data, setData] = useState([])
-    const allCars = useSelector((state) => state.cars.cars);
-    const formData = useSelector((state) => state.cars.formData);
-
-    const [make, setMake] = useState('')
-    const dispatch = useDispatch();
+  const [page, setPage] = useState(2);
+  const [data, setData] = useState([]);
+  const allCars = useSelector((state) => state.cars.cars);
+  const formData = useSelector((state) => state.cars.formData);
+  const [make, setMake] = useState('');
 
 useEffect(() => {
   if(data.length === 0){
-    dispatch(getCars({}))
-    setData(allCars)
-  }
-}, [allCars, data.length, dispatch, page])
+    dispatch(getCars({}));
+    setData(allCars);
+  };
+}, [allCars, data.length, dispatch, page]);
 
 useEffect(() => {
-  setMake(formData.make)
-if(make !== formData.make){
-  setData(allCars)
-}
-}, [allCars, formData.make, make])
+  setMake(formData.make);
+  if(make !== formData.make){
+    setData(allCars);
+  };
+}, [allCars, formData.make, make]);
 
 
 const handleClick = async() => {
-  setPage(prevPage => prevPage + 1)
-  const response = await dispatch(getCars({page}))
+  setPage(prevPage => prevPage + 1);
+  const response = await dispatch(getCars({page}));
   await setData((prevData) => [...prevData, ...response.payload]);
   };
 
@@ -48,7 +46,7 @@ const handleClick = async() => {
     position: "absolute",
     top: 30,
     left: 30,
-}
+};
 
   return (
 <section>
@@ -62,6 +60,6 @@ const handleClick = async() => {
     {location.pathname === "/catalog" && <button onClick={()=>handleClick()} type='bottom' className={cn('item__load')}>Load more</button>}
     </section>
   )
-}
+};
 
-export default CarsList
+export default CarsList;

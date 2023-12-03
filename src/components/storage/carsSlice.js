@@ -16,11 +16,10 @@ const carsSlice = createSlice({
         builder
             .addCase(getCars.fulfilled, (state, action) => {
                     state.cars = action.payload;
-                    state.formData = action.meta.arg
-
+                    state.formData = action.meta.arg;
                 })
                 .addCase(addToFavorites.fulfilled, (state, action) => {
-                    state.favorites = action.payload
+                    state.favorites = action.payload;
             })
     },
 });

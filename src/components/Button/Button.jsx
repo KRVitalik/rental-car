@@ -13,7 +13,7 @@ const Button = ({title, type, customStyle, action}) => {
         onClick={action}>
           {title}
       </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
