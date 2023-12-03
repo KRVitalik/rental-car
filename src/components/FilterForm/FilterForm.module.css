@@ -1,0 +1,76 @@
+.form__container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 150px 128px 0 128px;
+    gap: 18px;
+}
+
+.form__label_brand{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.form__select_car{
+    display: flex;
+    padding: 14px 18px 14px 18px;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    outline: 0;
+    border-radius: 14px;
+    background: #F7F7FB;
+    height: 48px;
+}
+
+.form__input_priceStep{
+    display: flex;
+    border: 0;
+    outline: 0;
+width: 125px;
+padding: 14px 18px;
+align-items: flex-start;
+gap: 32px;
+border-radius: 14px;
+background: #F7F7FB;
+height: 48px;
+}
+
+.form__input_priceStep::placeholder,
+.form__input_mileage::placeholder,
+.form__select_placeholder{
+    color: #121417;
+
+font-family: Manrope;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 111.111% */
+}
+
+.mileage{
+    display: flex;
+}
+
+.form__input_mileage{
+    display: flex;
+width: 160px;
+height: 48px;
+padding: 14px 24px 14px 24px;
+align-items: center;
+flex-shrink: 0;
+border: 0;
+outline: 0;
+background: #F7F7FB;
+}
+
+.min{
+    border-radius: 14px 0px 0px 14px;
+    border-right: 1px solid rgba(138, 138, 137, 0.20);
+}
+
+.max{
+    border-radius: 0px 14px 14px 0px;
+}

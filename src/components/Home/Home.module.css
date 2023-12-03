@@ -1,0 +1,27 @@
+.home__container{
+    display: flex;
+    gap: 12px;
+    padding: 40px;
+}
+
+.home__container li a{
+    cursor: pointer;
+    display: flex;
+    width: 274px;
+    height: 44px;
+    padding: 12px 12px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #c7cbd5;
+    
+    color: #3470FF;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+    border: 0;
+    outline: 0;
+}
