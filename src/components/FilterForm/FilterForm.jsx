@@ -26,7 +26,6 @@ const FilterForm = () => {
         <form className={cn('form__container')} onSubmit={(e)=>handleForm(e)}>
         <label className={cn('form__label_brand')}>Car brand
             <select className={cn('form__select_car')} name="cars" id="cars">
-                {/* <option className={cn('form__select_placeholder')} value="" disabled selected hidden>Enter the text</option> */}
                 {cars.map((car)=><option key={car} value={car}>{car}</option>)}
             </select>
         </label>
