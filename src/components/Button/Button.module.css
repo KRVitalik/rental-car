@@ -9,7 +9,7 @@ align-items: center;
 flex-shrink: 0;
 border-radius: 12px;
 background: #3470FF;
-
+transition: background-color 0.3s ease;
 color: var(--White, #FFF);
 font-family: Manrope;
 font-size: 14px;
@@ -18,4 +18,8 @@ font-weight: 600;
 line-height: 20px; /* 142.857% */
 border: 0;
 outline: 0;
+}
+
+.button:hover{
+    background-color: #0B44CD;
 }

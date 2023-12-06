@@ -38,6 +38,7 @@ padding: 40px;
     border-radius: 14px;
     background: lightgray 50% / cover no-repeat;
     margin-bottom: 14px;
+    object-fit: cover;
 }
 
 .modal__carName{

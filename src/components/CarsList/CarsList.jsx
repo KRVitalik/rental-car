@@ -49,7 +49,7 @@ const handleClick = async() => {
 };
 
   return (
-<section>
+<section className={cn('item__section')}>
   <Link to=".." relative="path">
       <Button title={"Back"} type="button" customStyle={buttonStyle}/>
   </Link>
