@@ -13,7 +13,21 @@
     right: 14px;
     fill: transparent;
     stroke: #FFFFFFCC;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
 }
+
+    .item__svg:hover{
+    stroke: #6986ca;
+    }
+
+    .item__svg:focus{
+    stroke: #6986ca;
+    }
+
+
 
 .item__image{
     width: 274px;
