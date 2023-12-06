@@ -24,4 +24,9 @@
 background-color: transparent;
 padding: 0;
 margin: 0 auto;
+transition: background-color 0.3s ease;
+}
+
+.item__load:hover{
+    color: #0B44CD;
 }

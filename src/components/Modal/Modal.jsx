@@ -44,9 +44,11 @@ const Modal = ({data}) => {
     createPortal(
       <dialog onClick={(e)=>handleBackdrop(e)}>
       <div className={cn('modal')}>
-        <svg className={cn('modal__svg')} onClick={()=>dialog.close()} width="24px" height="24px">
+        <button className={cn('modal__svg')} onClick={()=>dialog.close()}>
+          <svg   width="24px" height="24px">
                     <use href={icon + "#icon-x"}></use>
                 </svg>
+                </button>
                 <img className={cn('modal__img')} src={data.img} alt="" />
                 <div className={cn('modal__carName')}>
                         <h2>{data.make}&ensp;</h2>

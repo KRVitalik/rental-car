@@ -23,13 +23,15 @@ const CarItem = ({items}) => {
         return favoritesCars.find(favoritesCar => favoritesCar === id);
     };
 
-    const handleFavoriteClick = (id) => {
-        switch (!sortFavoritesCars(id)) {
+    const handleFavoriteClick = (el) => {
+        console.log(sortFavoritesCars(el.id))
+        switch (!sortFavoritesCars(el.id)) {
             case true:
-                dispatch(addToFavorites([...favoritesCars, id]));
+                dispatch(addToFavorites([...favoritesCars, el]));
             break;
             case false:
-                const newFavorites = favoritesCars.filter(favoritesCarId => favoritesCarId !== id);
+                const newFavorites = favoritesCars.filter(favoritesCar => console.log(favoritesCar));
+                console.log(newFavorites)
                 dispatch(addToFavorites(newFavorites));
             break;
             default:
@@ -54,29 +56,31 @@ const CarItem = ({items}) => {
 <>
 {items && itemsToRender().map((item)=>
             <li className={cn('item')} key={item.id}>
-                <svg className={cn('item__svg')} onClick={()=>handleFavoriteClick(item.id)} width="18px" height="18px">
-                    <use href={icon + `${sortFavoritesCars(item.id) ? "#icon-active" : "#icon-normal"}`}></use>
-                </svg>
+                <button className={cn('item__svg')} onClick={()=>handleFavoriteClick(item)}>
+                    <svg width="18px" height="18px">
+                        <use href={icon + `${sortFavoritesCars(item) ? "#icon-active" : "#icon-normal"}`}></use>
+                    </svg>
+                </button>
                 <div>
                     <img className={cn('item__image')} src={item.img} alt={item.model} />
-                <div className={cn('item__carName')}>
-                    <div>
-                        <h2>{item.make}&nbsp;</h2>
-                        <span>{item.model}</span>
-                        <p>,&nbsp;{item.year}</p>
+                    <div className={cn('item__carName')}>
+                        <div>
+                            <h2>{item.make}&nbsp;</h2>
+                            <span>{item.model}</span>
+                            <p>,&nbsp;{item.year}</p>
+                        </div>
+                        <p>{item.rentalPrice}</p>
                     </div>
-                    <p>{item.rentalPrice}</p>
-                </div>
-                <ul className={cn('item__info_list')}>
-                    <li>&nbsp;{carInCity(item.address)}&nbsp;</li>
-                    <li>&nbsp;{carInCountry(item.address)}&nbsp;</li>
-                    <li>&nbsp;{item.rentalCompany}&nbsp;</li>
-                    <li>&nbsp;Premium&nbsp;</li>
-                    <li>&nbsp;{item.type}&nbsp;</li>
-                    <li>&nbsp;{item.model}&nbsp;</li>
-                    <li>&nbsp;{item.id}&nbsp;</li>
-                    <li>&nbsp;{item.functionalities[1]}&nbsp;</li>
-                </ul>
+                    <ul className={cn('item__info_list')}>
+                        <li>&nbsp;{carInCity(item.address)}&nbsp;</li>
+                        <li>&nbsp;{carInCountry(item.address)}&nbsp;</li>
+                        <li>&nbsp;{item.rentalCompany}&nbsp;</li>
+                        <li>&nbsp;Premium&nbsp;</li>
+                        <li>&nbsp;{item.type}&nbsp;</li>
+                        <li>&nbsp;{item.model}&nbsp;</li>
+                        <li>&nbsp;{item.id}&nbsp;</li>
+                        <li>&nbsp;{item.functionalities[1]}&nbsp;</li>
+                    </ul>
                 </div>
                 <Button id="openDialog" title={"Learn more"} type={'button'} action={()=>openModal(item)} onClick={()=>dialog.showModal()}/>
             </li>

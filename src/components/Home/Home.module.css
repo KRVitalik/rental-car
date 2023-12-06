@@ -47,3 +47,7 @@
 .home__container li a:hover{
     color: rgb(121, 32, 0);
 }
+
+.home__container li a:focus{
+    color: rgb(121, 32, 0);
+}
