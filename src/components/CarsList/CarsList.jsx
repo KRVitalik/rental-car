@@ -19,45 +19,45 @@ const CarsList = () => {
   const formData = useSelector((state) => state.cars.formData);
   const [make, setMake] = useState('');
 
-useEffect(() => {
-  if(data.length === 0){
-    dispatch(getCars({}));
-    setData(allCars);
-  };
-}, [allCars, data.length, dispatch, page]);
+  useEffect(() => {
+    if (data.length === 0) {
+      dispatch(getCars({}));
+      setData(allCars);
+    };
+  }, [allCars, data.length, dispatch, page]);
 
-useEffect(() => {
-  setMake(formData.make);
-  if(make !== formData.make){
-    setData(allCars);
-  };
-}, [allCars, formData.make, make]);
+  useEffect(() => {
+    setMake(formData.make);
+    if (make !== formData.make) {
+      setData(allCars);
+    };
+  }, [allCars, formData.make, make]);
 
 
-const handleClick = async() => {
-  setPage(prevPage => prevPage + 1);
-  const response = await dispatch(getCars({page}));
-  await setData((prevData) => [...prevData, ...response.payload]);
+  const handleClick = async () => {
+    setPage(prevPage => prevPage + 1);
+    const response = await dispatch(getCars({ page }));
+    await setData((prevData) => [...prevData, ...response.payload]);
   };
 
   const buttonStyle = {
-    height:40,
+    height: 40,
     width: 100,
     position: "absolute",
     top: 30,
     left: 30,
-};
+  };
 
   return (
-<section className={cn('item__section')}>
-  <Link to=".." relative="path">
-      <Button title={"Back"} type="button" customStyle={buttonStyle}/>
-  </Link>
-  <FilterForm/>
-    <ul className={cn('item__container')}>
-        <CarItem items={data}/>
-    </ul>
-    {location.pathname === "/catalog" && <button onClick={()=>handleClick()} type='bottom' className={cn('item__load')}>Load more</button>}
+    <section className={cn('item__section')}>
+      <Link to=".." relative="path">
+        <Button title={"Back"} type="button" customStyle={buttonStyle} />
+      </Link>
+      <FilterForm />
+      <ul className={cn('item__container')}>
+        <CarItem items={data} />
+      </ul>
+      {location.pathname === "/catalog" && <button onClick={() => handleClick()} type='bottom' className={cn('item__load')}>Load more</button>}
     </section>
   )
 };
